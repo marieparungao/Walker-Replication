@@ -1,7 +1,7 @@
-download_ipeds <- function(prefix, year) {
+download_ipeds <- function(prefix, year, suffix = "") {
   
   # Name of the IPEDS file, e.g. ADM2018
-  file_name <- paste0(prefix, year)
+  file_name <- paste0(prefix, year, suffix)
   
   # Folder where original IPEDS data will be stored
   raw_folder <- here::here(

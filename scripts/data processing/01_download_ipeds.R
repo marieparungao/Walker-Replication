@@ -39,3 +39,8 @@ hd_zip_files <- purrr::map(
   years,
   ~ download_ipeds("HD", .x)
 )
+# Download IPEDS Fall Enrollment Residence/Migration files
+efc_zip_files <- purrr::map(
+  years,
+  ~ download_ipeds("EF", .x, "C")
+)
