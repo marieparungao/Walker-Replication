@@ -1,0 +1,4 @@
+group,estimate_pp,p_value
+Public,-0.4268,0.23291
+Private nonprofit,-0.964,1.8158e-4
+Private - Public difference,-0.5373,0.2083557
