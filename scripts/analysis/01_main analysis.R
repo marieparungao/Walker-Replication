@@ -33,10 +33,11 @@ model_main <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = maindf,
-  cluster = ~ unitid
+  cluster = ~ state
 )
+
 # Display regression results
 print(summary(model_main))
 

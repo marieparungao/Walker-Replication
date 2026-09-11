@@ -27,7 +27,6 @@ load(
 maindf |>
   distinct(
     unitid,
-    institution,
     control,
     repeal
   ) |>
@@ -57,9 +56,9 @@ model_public <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = public_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_public))
@@ -75,9 +74,9 @@ model_private <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = private_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_private))
@@ -114,9 +113,9 @@ model_public_private <- fixest::feols(
     i(year, repeal, ref = 2021) +
     i(year, private, ref = 2021) +
     i(year, repeal_private, ref = 2021) |
-    unitid + year,
+    unitid + state + year,
   data = extension_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_public_private))
@@ -234,7 +233,7 @@ public_private_plot <- ggplot(
     linetype = "Institution Type",
     caption = paste0(
       "2022 private-public difference: ",
-      "-0.54 pp, p = 0.208"
+      "-0.54 pp, p = 0.161"
     )
   ) +
   theme_minimal(base_size = 12)
@@ -269,9 +268,9 @@ extension_results <- tibble(
     -0.005373 * 100
   ),
   p_value = c(
-    0.23291,
-    0.00018158,
-    0.2083557
+    0.25278,
+    0.000051439,
+    0.161482
   )
 )
 

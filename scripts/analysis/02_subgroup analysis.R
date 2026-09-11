@@ -41,9 +41,9 @@ model_top50 <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = top50_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_top50))
@@ -171,9 +171,9 @@ model_rank51_100 <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = rank51_100_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_rank51_100))
@@ -403,9 +403,9 @@ model_high_oos <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = high_oos_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_high_oos))
@@ -418,9 +418,9 @@ model_low_oos <- fixest::feols(
     repeal,
     ref = 2021
   ) |
-    unitid + year,
+    unitid + state + year,
   data = low_oos_df,
-  cluster = ~ unitid
+  cluster = ~ state
 )
 
 print(summary(model_low_oos))
