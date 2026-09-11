@@ -6,6 +6,9 @@
 # ------------------------------------------------------------
 
 # Load packages used throughout the project
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
 pacman::p_load(
   tidyverse,
   readxl,
@@ -20,7 +23,16 @@ pacman::p_load(
 # ------------------------------------------------------------
 # 1. Process raw data and build analysis dataset
 # ------------------------------------------------------------
+# Download raw IPEDS files
+source(
+  here::here(
+    "scripts",
+    "data processing",
+    "01_download_ipeds.R"
+  )
+)
 
+# Process raw data
 source(
   here::here(
     "scripts",

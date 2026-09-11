@@ -343,7 +343,7 @@ balanced_ids <- df |>
     .groups = "drop"
   ) |>
   filter(
-    n_years == 5,
+    n_years == length(years),
     complete_wshare
   ) |>
   pull(unitid)

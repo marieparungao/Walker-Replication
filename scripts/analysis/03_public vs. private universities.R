@@ -103,7 +103,8 @@ print(pretrend_private)
 # ------------------------------------------------------------
 
 extension_df <- maindf |>
-  mutate(
+   filter(control %in% c(1, 2)) |>
+   mutate(
     private = if_else(control == 2, 1L, 0L),
     repeal_private = repeal * private
   )
